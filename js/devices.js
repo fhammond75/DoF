@@ -44,6 +44,14 @@ const CAMERAS = [
 
 const PHONES = [
   {
+    id: 'iphone17promax',
+    label: 'iPhone 17 Pro Max — main 1× (1/1.28″)',
+    coc: 0.0081,
+    cropFactor: 3.5,
+    equivalent: true,
+    default: true,
+  },
+  {
     id: 'pro-main',
     label: 'Pro phone — main 1× (1/1.28″)',
     coc: 0.0081,
