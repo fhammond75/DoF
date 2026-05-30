@@ -49,6 +49,7 @@ const PHONES = [
     coc: 0.0081,
     cropFactor: 3.5,
     equivalent: true,
+    aperture: 1.78,
     default: true,
   },
   {
@@ -57,6 +58,7 @@ const PHONES = [
     coc: 0.0081,
     cropFactor: 3.5,
     equivalent: true,
+    aperture: 1.78,
   },
   {
     id: 'flagship-main',
@@ -64,6 +66,7 @@ const PHONES = [
     coc: 0.0080,
     cropFactor: 3.6,
     equivalent: true,
+    aperture: 1.8,
   },
   {
     id: 'midrange',
@@ -71,6 +74,7 @@ const PHONES = [
     coc: 0.0063,
     cropFactor: 4.6,
     equivalent: true,
+    aperture: 1.8,
   },
   {
     id: 'budget',
@@ -78,6 +82,7 @@ const PHONES = [
     coc: 0.0051,
     cropFactor: 5.6,
     equivalent: true,
+    aperture: 2.0,
   },
 ];
 

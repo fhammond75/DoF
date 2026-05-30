@@ -374,6 +374,91 @@ input[type="number"] { -moz-appearance: textfield; }
   line-height: 1.5;
 }
 
+/* ── Distance slider ─────────────────────────────────────────────────────── */
+.slider-wrap { position: relative; margin: 8px 0 4px; }
+#distance-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--hairline-strong);
+  outline: none;
+}
+#distance-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+#distance-slider::-moz-range-thumb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--blue);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+.preset-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+.preset-label-item {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+/* ── Scene SVG strip ─────────────────────────────────────────────────────── */
+#scene-svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ── Easy results panel ──────────────────────────────────────────────────── */
+.easy-result-text {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  padding: 14px 16px;
+  background: var(--panel);
+  border-radius: 9px;
+  border: 1px solid var(--hairline);
+  margin-bottom: 16px;
+}
+.easy-result-text strong {
+  color: var(--blue);
+}
+.easy-result-hint {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  padding: 0 2px;
+}
+
+/* ── Mode toggle ─────────────────────────────────────────────────────────── */
+.mode-toggle {
+  text-align: center;
+  margin-top: 10px;
+}
+.mode-toggle button {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.mode-toggle button:hover { color: var(--blue); }
+
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 .page-footer {
   margin-top: 20px;

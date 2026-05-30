@@ -41,24 +41,26 @@
     <section class="section">
       <div class="section-title">Settings</div>
 
-      <div class="form-row">
-        <label id="focal-label" for="focal">Focal length</label>
-        <input
-          type="number"
-          id="focal"
-          min="1"
-          max="2000"
-          step="1"
-          placeholder="50"
-          value="50"
-        />
-        <span class="hint" id="focal-hint">As marked on the lens (mm).</span>
-      </div>
+      <div id="advanced-fields">
+        <div class="form-row">
+          <label id="focal-label" for="focal">Focal length</label>
+          <input
+            type="number"
+            id="focal"
+            min="1"
+            max="2000"
+            step="1"
+            placeholder="50"
+            value="50"
+          />
+          <span class="hint" id="focal-hint">As marked on the lens (mm).</span>
+        </div>
 
-      <div class="form-row">
-        <label for="aperture">Aperture</label>
-        <div class="select-wrap">
-          <select id="aperture"></select>
+        <div class="form-row">
+          <label for="aperture">Aperture</label>
+          <div class="select-wrap">
+            <select id="aperture"></select>
+          </div>
         </div>
       </div>
 
@@ -78,37 +80,59 @@
           value="3"
         />
       </div>
+
+      <!-- Bird's-eye scene SVG -->
+      <svg id="scene-svg" aria-hidden="true"></svg>
+
+      <!-- Distance slider -->
+      <div class="slider-wrap">
+        <input type="range" id="distance-slider" min="0" max="1000" step="1" value="500" />
+      </div>
+      <div class="preset-labels" id="preset-labels"></div>
+
+      <!-- Mode toggle -->
+      <div class="mode-toggle">
+        <button id="mode-toggle-btn" type="button">Advanced ▾</button>
+      </div>
     </section>
 
     <!-- ── Results section ───────────────────────────────────────────────── -->
     <section class="section">
       <div class="section-title">Results</div>
 
-      <div class="result-hero">
-        <div class="result-hero-label">Total depth of field</div>
-        <div class="result-hero-value" id="result-total">—</div>
+      <!-- Easy results panel -->
+      <div id="easy-results" style="display:none">
+        <div id="easy-result-content"><em>Enter a distance to see results.</em></div>
       </div>
 
-      <div class="results-grid">
-        <div class="result-cell">
-          <div class="result-cell-label">Near limit</div>
-          <div class="result-cell-value" id="result-near">—</div>
+      <!-- Advanced results panel -->
+      <div id="advanced-results">
+        <div class="result-hero">
+          <div class="result-hero-label">Total depth of field</div>
+          <div class="result-hero-value" id="result-total">—</div>
         </div>
-        <div class="result-cell">
-          <div class="result-cell-label">Far limit</div>
-          <div class="result-cell-value" id="result-far">—</div>
-        </div>
-        <div class="result-cell">
-          <div class="result-cell-label">In front</div>
-          <div class="result-cell-value" id="result-front">—</div>
-        </div>
-        <div class="result-cell">
-          <div class="result-cell-label">Behind</div>
-          <div class="result-cell-value" id="result-behind">—</div>
+
+        <div class="results-grid">
+          <div class="result-cell">
+            <div class="result-cell-label">Near limit</div>
+            <div class="result-cell-value" id="result-near">—</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-label">Far limit</div>
+            <div class="result-cell-value" id="result-far">—</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-label">In front</div>
+            <div class="result-cell-value" id="result-front">—</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-label">Behind</div>
+            <div class="result-cell-value" id="result-behind">—</div>
+          </div>
         </div>
       </div>
 
-      <!-- Focus-zone bar -->
+      <!-- Focus-zone bar (always visible) -->
       <div class="focus-bar-wrap">
         <div class="focus-bar-track" id="bar-track">
           <div class="focus-bar-fill" id="bar-fill" style="left:0%;width:0%"></div>
