@@ -1,0 +1,402 @@
+/* ── Design tokens ───────────────────────────────────────────────────────── */
+:root {
+  --bg-top: #fafafb;
+  --bg-bot: #ececed;
+  --card: #ffffff;
+  --panel: #f5f5f7;
+  --hairline: #d6d6db;
+  --hairline-strong: #c4c4c9;
+  --ink: #1d1d1f;
+  --ink-soft: #6e6e73;
+  --ink-faint: #9a9aa0;
+  --blue: #007aff;
+  --green: #34c759;
+  --field-top: #fcfcfd;
+  --field-bot: #f1f1f3;
+  --radius-card: 14px;
+  --radius-field: 7px;
+  --radius-cell: 9px;
+}
+
+/* ── Reset ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Lucida Grande", "Helvetica Neue", Helvetica, -apple-system, Arial, sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-bot) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px 48px;
+}
+
+/* ── Page header ─────────────────────────────────────────────────────────── */
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+}
+
+.page-header p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, .07),
+    inset 0 1px 0 rgba(255, 255, 255, .85);
+  width: 100%;
+  max-width: 430px;
+  overflow: hidden;
+}
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+.section {
+  padding: 18px 20px;
+}
+
+.section + .section {
+  border-top: 1px solid var(--hairline);
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+
+/* ── Form rows ────────────────────────────────────────────────────────────── */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.form-row label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 3px;
+}
+
+/* ── Fields (inputs + selects) ───────────────────────────────────────────── */
+input[type="number"],
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  background: linear-gradient(to bottom, var(--field-top), var(--field-bot));
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-field);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .06);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--blue);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, .06),
+    0 0 0 3px rgba(0, 122, 255, .18);
+}
+
+/* Remove number spinner arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] { -moz-appearance: textfield; }
+
+/* Custom select with chevron */
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap select {
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+.select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%239a9aa0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ── Segmented unit toggle ────────────────────────────────────────────────── */
+.unit-toggle {
+  display: flex;
+  background: var(--panel);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+  width: 100%;
+}
+
+.unit-btn {
+  flex: 1;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.18s;
+  outline: none;
+}
+
+.unit-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, .25);
+}
+
+.unit-btn.active {
+  background: linear-gradient(to bottom, #1a8fff, #007aff);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 122, 255, .35);
+}
+
+/* ── Distance row with toggle ─────────────────────────────────────────────── */
+.distance-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  gap: 4px 10px;
+  margin-bottom: 14px;
+  align-items: start;
+}
+
+.distance-row label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.distance-row .unit-toggle {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  width: 130px;
+  margin-top: 0;
+}
+
+.distance-row input {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* ── Results section ─────────────────────────────────────────────────────── */
+.result-hero {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.result-hero-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.result-hero-value {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 42px;
+  letter-spacing: -1px;
+  color: var(--blue);
+  line-height: 1;
+}
+
+/* ── Results grid ────────────────────────────────────────────────────────── */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.result-cell {
+  background: var(--panel);
+  border-radius: var(--radius-cell);
+  border: 1px solid var(--hairline);
+  padding: 10px 12px;
+}
+
+.result-cell-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.result-cell-value {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+}
+
+/* ── Focus-zone bar ──────────────────────────────────────────────────────── */
+.focus-bar-wrap {
+  margin-bottom: 14px;
+}
+
+.focus-bar-track {
+  position: relative;
+  height: 12px;
+  background: var(--panel);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.focus-bar-fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(to right, rgba(52, 199, 89, .35), rgba(52, 199, 89, .55));
+  border-left: 1px solid rgba(52, 199, 89, .6);
+  border-right: 1px solid rgba(52, 199, 89, .6);
+  transition: left 0.2s, width 0.2s;
+}
+
+.focus-bar-marker {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--blue);
+  border-radius: 2px;
+  box-shadow: 0 0 0 1.5px rgba(0, 122, 255, .25);
+  transition: left 0.2s;
+}
+
+.focus-bar-labels {
+  position: relative;
+  height: 18px;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+.focus-bar-labels span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.bar-label-subject {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+/* ── Notes ───────────────────────────────────────────────────────────────── */
+.hyperfocal-note {
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.phone-note {
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: center;
+  background: rgba(0, 122, 255, .05);
+  border: 1px solid rgba(0, 122, 255, .15);
+  border-radius: 7px;
+  padding: 7px 10px;
+  line-height: 1.5;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.page-footer {
+  margin-top: 20px;
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+  }
+
+  .result-hero-value {
+    font-size: 36px;
+  }
+
+  .distance-row .unit-toggle {
+    width: 110px;
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depth of Field Calculator</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main>
+    <div class="card">
+
+      <!-- ── Gear ── -->
+      <section class="section">
+        <h2 class="section-title">What are you shooting with?</h2>
+
+        <div class="field-row">
+          <label class="field-label" for="category">Category</label>
+          <div class="select-wrap">
+            <select id="category">
+              <option value="camera">Camera</option>
+              <option value="phone">Smartphone</option>
+            </select>
+            <svg class="chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label class="field-label" id="model-label" for="model">Sensor format</label>
+          <div class="select-wrap">
+            <select id="model"></select>
+            <svg class="chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ── Settings ── -->
+      <section class="section">
+        <h2 class="section-title">Settings</h2>
+
+        <div class="field-row">
+          <div class="field-label-group">
+            <label class="field-label" id="focal-label" for="focal">Focal length</label>
+            <span class="field-hint" id="focal-hint">As marked on the lens (mm).</span>
+          </div>
+          <input class="number-input" type="number" id="focal" value="50" min="1" step="1">
+        </div>
+
+        <div class="field-row">
+          <label class="field-label" for="aperture">Aperture</label>
+          <div class="select-wrap">
+            <select id="aperture"></select>
+            <svg class="chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label class="field-label" for="distance">Focus distance</label>
+          <div class="distance-row">
+            <input class="number-input" type="number" id="distance" value="3" min="0.01" step="0.1">
+            <div class="unit-toggle" role="group" aria-label="Distance units">
+              <button class="unit-btn active" data-unit="m" aria-pressed="true">Meters</button>
+              <button class="unit-btn" data-unit="ft" aria-pressed="false">Feet</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ── Results ── -->
+      <section class="section results-section">
+        <h2 class="section-title">Results</h2>
+
+        <div class="hero-row">
+          <span class="hero-label">Total depth of field</span>
+          <span class="hero-value" id="result-total">—</span>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-cell">
+            <span class="result-cell-label">Near limit</span>
+            <span class="result-cell-value" id="result-near">—</span>
+          </div>
+          <div class="result-cell">
+            <span class="result-cell-label">Far limit</span>
+            <span class="result-cell-value" id="result-far">—</span>
+          </div>
+          <div class="result-cell">
+            <span class="result-cell-label">In front</span>
+            <span class="result-cell-value" id="result-front">—</span>
+          </div>
+          <div class="result-cell">
+            <span class="result-cell-label">Behind</span>
+            <span class="result-cell-value" id="result-behind">—</span>
+          </div>
+        </div>
+
+        <!-- Focus-zone bar -->
+        <div class="bar-container">
+          <div class="bar-track" id="bar-track">
+            <div class="bar-fill" id="bar-fill"></div>
+            <div class="bar-marker" id="bar-marker"></div>
+            <div class="bar-inf-label" id="bar-inf-label">∞</div>
+          </div>
+          <div class="bar-labels">
+            <span class="bar-label" id="bar-label-near"></span>
+            <span class="bar-label bar-label-center" id="bar-label-subject"></span>
+            <span class="bar-label bar-label-right" id="bar-label-far"></span>
+          </div>
+        </div>
+
+        <p class="note-line" id="hyperfocal-note"></p>
+        <p class="note-line phone-note" id="phone-note" style="display:none">
+          ≈ Approximate — phone sensor class values. Focal length converted from equivalent.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/engine.js"></script>
+  <script src="js/devices.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
